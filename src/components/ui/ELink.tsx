@@ -4,17 +4,27 @@ import React from 'react';
 export default function ELink(
     {
         href,
+        underline = false,
         children,
         className,
         ...props}:
     {
         href: string,
+        underline?: boolean | undefined,
         children?: React.ReactNode,
-        className?: string}) {
+        className?: string
+    }) {
+    let ul = '';
+
+    if (underline) {
+        ul = 'hover:underline hover:underline-offset-2';
+    }
+
+
     return (
         <Link
             href={href}
-            className={className}
+            className={`no-underline ${ul} ${className}`}
             {...props}
         >
             {children}

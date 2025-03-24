@@ -1,8 +1,8 @@
-import Link from "next/link";
+import ELink from '@/components/ui/ELink';
 
 export default function Home() {
     const pages = [
-        { name: "Генератор паролей\n(Не работает)", path: "/password-generator", description: "Создавайте безопасные пароли для своих аккаунтов." },
+        { name: "Генератор паролей", path: "/password-generator", description: "Создавайте безопасные пароли для своих аккаунтов." },
         { name: "QR-код генератор", path: "/qrcode-generator", description: "Создавайте QR-коды для ссылок и текстов." }
     ];
     return (
@@ -11,8 +11,8 @@ export default function Home() {
                 <h1 className="text-xl text-gray-200 ml-8">Eragod&#39;s Website</h1>
                 <nav>
                     <ul className="flex space-x-6 mr-8 text-gray-200">
-                        <li><Link href="#about" className="hover:text-gray-400">О сайте</Link></li>
-                        <li><Link href="#contact" className="hover:text-gray-400">Контакты</Link></li>
+                        <li><ELink href="#about" underline={true}>О сайте</ELink></li>
+                        <li><ELink href="#contact" underline={true}>Контакты</ELink></li>
                     </ul>
                 </nav>
             </header>
@@ -23,12 +23,12 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12 max-w-1/2">
                     {pages.map((page, index) => (
-                        <Link key={index} href={page.path} className="w-full">
+                        <ELink key={index} href={page.path} className="w-full">
                             <div className="bg-cyan-900 p-6 rounded-xl shadow-md hover:shadow-2xl transition-all transform hover:-translate-y-1 text-white cursor-pointer flex flex-col items-center text-center w-full h-40">
                                 <h2 className="text-2xl font-semibold mb-2">{page.name}</h2>
                                 <p className="text-gray-400 text-sm">{page.description}</p>
                             </div>
-                        </Link>
+                        </ELink>
                     ))}
                 </div>
             </main>

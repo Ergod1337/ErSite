@@ -4,9 +4,11 @@ export default function EButton(
     {
         children,
         onClick,
+        className,
         variant = 'default',
         ...props
     }: {
+        className?: string;
         children?: React.ReactNode;
         onClick: React.MouseEventHandler<HTMLButtonElement>;
         variant?: 'default' | 'success';
@@ -21,7 +23,7 @@ export default function EButton(
         <button
             onClick={onClick}
             className={`px-4 py-2 rounded-4xl font-medium transition-all 
-            ${variants[variant]}`}
+            ${variants[variant]} ${className}`}
             {...props}
         >
             {children}

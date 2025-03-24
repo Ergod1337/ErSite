@@ -1,20 +1,18 @@
 'use client';
 
 import QrCodeWithLogo from 'qrcode-with-logos';
-import React, { useState } from 'react';
-import Header from 'next/head';
+import { useState } from 'react';
 import QRCode from 'qrcode';
 
 import EButton from '@/components/ui/EButton';
 import EInput from '@/components/ui/EInput';
 
-export default function Home() {
+export default function QRCodeGenerator() {
     const [text, setText] = useState('');
     const [src, setSrc] = useState('');
 
     const QRCodeGenerator = () => {
         QRCode.toDataURL(text, {errorCorrectionLevel: 'H'}).then(setSrc)
-
     };
     
     const QRCodeSaver = () => {
@@ -24,33 +22,26 @@ export default function Home() {
                 errorCorrectionLevel: 'H'
             }
         })
-
         return qrcode.downloadImage('qr_'+text+'.png')
     }
 
     return (
-        <>
-            <Header>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-            </Header>
+        <div className='flex flex-col items-center justify-center'>
+            <EInput
+                type={text}
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+            />
 
-            <main>
-                <EInput
-                    type={text}
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img id='image' src={src} alt={''}/>
 
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img id='image' src={src} alt={''}/>
-
-                <EButton onClick={QRCodeGenerator}>
-                    Generate QR Code
-                </EButton>
-                <EButton onClick={QRCodeSaver}>
-                    Save QR Code
-                </EButton>
-            </main>
-        </>
+            <EButton onClick={QRCodeGenerator} className='m-2'>
+                Generate QR Code
+            </EButton>
+            <EButton onClick={QRCodeSaver}>
+                Save QR Code
+            </EButton>
+        </div>
     );
 };
