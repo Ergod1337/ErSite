@@ -10,11 +10,11 @@ export default function ELink(
         ...props}:
     {
         href: string,
-        underline?: boolean | undefined,
+        underline?: boolean,
         children?: React.ReactNode,
         className?: string
     }) {
-    let ul = '';
+    let ul: string = '';
 
     if (underline) {
         ul = 'hover:underline hover:underline-offset-2';

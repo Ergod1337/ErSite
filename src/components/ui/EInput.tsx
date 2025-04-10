@@ -9,7 +9,7 @@ export default function EInput(
         ...props}:
     {
         type: string,
-        value: string | number | undefined,
+        value?: string | number | undefined,
         onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
         placeholder?: string | undefined}) {
     return (

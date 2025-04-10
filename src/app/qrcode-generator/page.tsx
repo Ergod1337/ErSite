@@ -32,10 +32,8 @@ export default function QRCodeGenerator() {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
             />
-
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img id='image' src={src} alt={''}/>
-
             <EButton onClick={QRCodeGenerator} className='m-2'>
                 Generate QR Code
             </EButton>

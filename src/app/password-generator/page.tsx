@@ -6,7 +6,7 @@ import EButton from '@/components/ui/EButton';
 import EInput from '@/components/ui/EInput';
 
 function generatePassword(
-        length: number = 8,
+        length: number = 12,
         useNumbers: boolean = true,
         useSymbols: boolean = true,
     ) {
@@ -37,15 +37,15 @@ export default function PasswordGenerator() {
                 value={length}
                 onChange={(e) => setLength(Number(e.target.value))}
             />
-            <div className="flex items-center gap-2">
-                <input type="checkbox" checked={useNumbers}
+            <div className='flex items-center gap-2'>
+                <input type='checkbox' checked={useNumbers}
                        onChange={() => setUseNumbers(!useNumbers)}
                        className='w-4 h-4'
                 />
                 <label>Использовать цифры</label>
             </div>
-            <div className="flex items-center gap-2">
-                <input type="checkbox" checked={useSymbols}
+            <div className='flex items-center gap-2'>
+                <input type='checkbox' checked={useSymbols}
                        onChange={() => setUseSymbols(!useSymbols)}
                        className='w-4 h-4'
                 />
@@ -55,7 +55,7 @@ export default function PasswordGenerator() {
                 onClick={() => setPassword(generatePassword(length, useNumbers, useSymbols))}>
                 Сгенерировать
             </EButton>
-            {password && <p className="mt-2 p-1 pl-2 pr-2 border rounded-4xl bg-gray-100 text-center">{password}</p>}
+            {password && <p className='mt-2 p-1 pl-2 pr-2 border rounded-4xl bg-gray-100 text-center'>{password}</p>}
         </div>
     );
 }
